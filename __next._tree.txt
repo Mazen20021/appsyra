@@ -1,5 +1,5 @@
 :HL["/appsyra/_next/static/chunks/0x.pxwmy6tt~x.css","style"]
-:HL["/appsyra/_next/static/chunks/0xjmtfvoodl2z.css","style"]
+:HL["/appsyra/_next/static/chunks/06rwnd2qxhp2u.css","style"]
 :HL["/appsyra/_next/static/media/797e433ab948586e-s.p.0.q-h669a_dqa.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/appsyra/_next/static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"lV9FVSjnQt6DIaRk205Vn"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"KKdt_qm851C3kjGzfBiPQ"}
