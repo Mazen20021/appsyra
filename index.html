@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Appsyra</title>
 
 <style>
@@ -20,6 +20,8 @@ background:#f4f8fc;
 color:#333;
 }
 
+/* NAVBAR */
+
 nav{
 display:flex;
 justify-content:space-between;
@@ -31,6 +33,40 @@ top:0;
 background:white;
 box-shadow:0 3px 15px rgba(0,0,0,.1);
 z-index:1000;
+
+transition: all 0.4s ease;
+backdrop-filter: blur(10px);
+}
+
+/* SCROLL EFFECT */
+nav.scrolled{
+background: rgba(255,255,255,0.75);
+box-shadow:0 3px 20px rgba(0,0,0,.08);
+padding:12px 8%;
+}
+
+/* LOGO animation */
+.logo-container img{
+width:55px;
+height:55px;
+border-radius:50%;
+transition:0.3s;
+}
+
+nav.scrolled .logo-container img{
+width:45px;
+height:45px;
+}
+
+.logo-text{
+font-size:28px;
+font-weight:bold;
+color:#0077cc;
+transition:0.3s;
+}
+
+nav.scrolled .logo-text{
+font-size:24px;
 }
 
 .logo-container{
@@ -55,17 +91,21 @@ nav ul{
 display:flex;
 list-style:none;
 gap:30px;
+flex-wrap:wrap;
 }
 
 nav a{
 text-decoration:none;
-color:#333;
 font-weight:bold;
+color:#333;
+transition:.3s;
 }
 
 nav a:hover{
 color:#00a6ff;
 }
+
+/* HERO */
 
 .hero{
 height:100vh;
@@ -74,14 +114,12 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-
 background:linear-gradient(
 135deg,
 #0077cc,
 #00a6ff,
 #004a99
 );
-
 color:white;
 }
 
@@ -90,7 +128,7 @@ max-width:850px;
 }
 
 .hero img{
-width:140px;
+width:150px;
 margin-bottom:20px;
 border-radius:50%;
 box-shadow:0 0 30px rgba(255,255,255,.4);
@@ -114,14 +152,16 @@ border-radius:50px;
 background:white;
 color:#0077cc;
 font-size:18px;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
 transition:.4s;
 }
 
 .btn:hover{
 transform:translateY(-5px);
 }
+
+/* SECTIONS */
 
 .section{
 padding:100px 8%;
@@ -136,27 +176,92 @@ color:#0077cc;
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 margin-top:50px;
 }
 
-.card{
+.card,
+.project-card,
+.client-card{
 padding:30px;
 background:white;
-border-radius:20px;
+border-radius:25px;
 box-shadow:0 5px 20px rgba(0,0,0,.08);
 transition:.4s;
 }
 
-.card:hover{
+.card:hover,
+.project-card:hover,
+.client-card:hover{
 transform:translateY(-10px);
 }
 
-.card h3{
-margin-bottom:15px;
+.card h3,
+.project-card h3,
+.client-card h3{
+margin:15px 0;
 color:#0077cc;
 }
+
+/* PROJECTS */
+
+.project-image{
+width:100px;
+height:100px;
+border-radius:25px;
+object-fit:cover;
+margin-bottom:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.project-card:hover .project-image{
+transform:scale(1.1);
+}
+
+.project-btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#0077cc;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.project-btn:hover{
+background:#00a6ff;
+}
+
+/* CLIENT LOGOS */
+
+.client-logo{
+width:120px;
+height:120px;
+object-fit:contain;
+margin-bottom:20px;
+transition:.4s;
+}
+
+.client-card:hover .client-logo{
+transform:scale(1.1);
+}
+
+.client-country{
+display:inline-block;
+margin-top:20px;
+padding:8px 18px;
+border-radius:20px;
+background:#0077cc;
+color:white;
+font-size:14px;
+font-weight:bold;
+}
+
+/* CONTACT */
 
 .contact{
 background:#0b1729;
@@ -172,10 +277,12 @@ margin:auto;
 margin-top:30px;
 }
 
-input,textarea{
+input,
+textarea{
 padding:15px;
 border:none;
 border-radius:10px;
+outline:none;
 }
 
 textarea{
@@ -190,15 +297,32 @@ background:black;
 color:white;
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
 
 .hero h1{
 font-size:38px;
 }
 
+.hero p{
+font-size:18px;
+}
+
 nav{
 flex-direction:column;
 gap:15px;
+padding:15px;
+}
+
+nav ul{
+justify-content:center;
+}
+
+.hero{
+padding-top:100px;
+height:auto;
+min-height:100vh;
 }
 
 }
@@ -208,32 +332,38 @@ gap:15px;
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
 
 <div class="logo-container">
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Appsyra Logo">
 <div class="logo-text">Appsyra</div>
 </div>
 
 <ul>
-<li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#clients">Clients</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-content">
 
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Appsyra Logo">
 
 <h1>Transforming Ideas Into Digital Reality</h1>
 
 <p>
-Appsyra creates mobile applications, websites,
-and innovative software solutions for businesses.
+Appsyra creates mobile applications,
+websites and innovative software solutions
+for businesses.
 </p>
 
 <button
@@ -246,17 +376,9 @@ Get Started
 
 </section>
 
-<section id="about" class="section">
 
-<h2>About Appsyra</h2>
 
-<p>
-We develop high-quality digital experiences using
-modern technologies with performance, scalability,
-and beautiful design.
-</p>
-
-</section>
+<!-- SERVICES -->
 
 <section id="services" class="section">
 
@@ -266,27 +388,214 @@ and beautiful design.
 
 <div class="card">
 <h3>📱 Mobile Apps</h3>
-<p>Android & iOS development</p>
+<p>Android & iOS Development</p>
 </div>
 
 <div class="card">
 <h3>🌐 Web Development</h3>
-<p>Modern responsive websites</p>
+<p>Modern Responsive Websites</p>
 </div>
 
 <div class="card">
 <h3>☁ Cloud Solutions</h3>
-<p>Scalable systems & APIs</p>
+<p>Scalable APIs & Systems</p>
 </div>
 
 <div class="card">
 <h3>🎨 UI/UX Design</h3>
-<p>Elegant user experiences</p>
+<p>Elegant User Experiences</p>
 </div>
 
 </div>
 
 </section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects" class="section">
+
+<h2>Our Projects</h2>
+
+<p>
+Applications developed by Appsyra and published on Google Play.
+</p>
+
+<div class="cards">
+
+<div class="project-card">
+
+<img src="images/wazaker.png"
+class="project-image"
+alt="Wazaker">
+
+<h3>Wazaker Syra</h3>
+
+<p>
+Islamic application with reminders,
+Azkar and spiritual content.
+</p>
+
+<a
+href="https://play.google.com/store/apps/details?id=com.wazaker.syra.app"
+target="_blank"
+class="project-btn">
+View App
+</a>
+
+</div>
+
+
+<div class="project-card">
+
+<img src="images/bourmaqdes.png"
+class="project-image"
+alt="BourEl-Maqdis">
+
+<h3>BourEl-Maqdis</h3>
+
+<p>
+Modern mobile application with
+an engaging user experience.
+</p>
+
+<a
+href="https://play.google.com/store/apps/details?id=com.mazen.bourmaqdes"
+target="_blank"
+class="project-btn">
+View App
+</a>
+
+</div>
+
+
+<div class="project-card">
+
+<img src="images/elshosh.png"
+class="project-image"
+alt="Elshosh">
+
+<h3>Elshosh Travel</h3>
+
+<p>
+Travel application for tourism
+and destination services.
+</p>
+
+<a
+href="https://play.google.com/store/apps/details?id=com.elshosh.travel"
+target="_blank"
+class="project-btn">
+View App
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CLIENTS -->
+
+<section id="clients" class="section">
+
+<h2>Our Clients</h2>
+
+<p>
+Companies and clients who trusted Appsyra.
+</p>
+
+<div class="cards">
+
+<div class="client-card">
+
+<img
+src="images/technosquare.png"
+class="client-logo"
+alt="TechnoSquare">
+
+<h3>TechnoSquare Company</h3>
+
+<p>
+Technology and software solutions partner.
+</p>
+
+<div class="client-country">
+🇪🇬 Egyptian Company
+</div>
+
+</div>
+
+
+
+<div class="client-card">
+
+<img
+src="images/bourelmaqdis.png"
+class="client-logo"
+alt="BourEl-Maqdis">
+
+<h3>BourEl-Maqdis Company</h3>
+
+<p>
+Digital solutions and business collaboration.
+</p>
+
+<div class="client-country">
+Egyptian Client
+</div>
+
+</div>
+
+
+
+<div class="client-card">
+
+<img
+src="images/sanadk.png"
+class="client-logo"
+alt="Sanadk">
+
+<h3>Sanadk Company</h3>
+
+<p>
+Legal Services and Digtal Solutions.
+</p>
+
+<div class="client-country">
+KSA Client
+</div>
+
+</div>
+
+
+
+<div class="client-card">
+
+<img
+src="images/procare.png"
+class="client-logo"
+alt="Procare Experts">
+
+<h3>Procare Experts</h3>
+
+<p>
+Hospital Services and QA Testing.
+</p>
+
+<div class="client-country">
+Ireland Company
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
 
 <section id="contact" class="section contact">
 
@@ -322,11 +631,23 @@ Send Message
 
 </section>
 
+
 <footer>
-
 © 2026 Appsyra • All Rights Reserved
-
 </footer>
 
 </body>
+<!-- ✅ FIXED SCRIPT (MUST BE HERE) -->
+<script>
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
+
 </html>
